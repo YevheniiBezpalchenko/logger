@@ -1,4 +1,3 @@
-module github.com/YevheniiBezpalchenko/logger/v2
+module github.com/YevheniiBezpalchenko/logger/
 
 go 1.13
-
