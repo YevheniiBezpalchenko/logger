@@ -63,33 +63,33 @@ func (l Log) Debug(message string, a ...interface{}) {
 	fmt.Fprintf(l.write, "\n")
 }
 
-func main() {
-	log := Log{}
-
-	file, err := os.OpenFile("logfile", os.O_APPEND|os.O_WRONLY, 0600)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	log.Start(file, [4]bool{true, true, true, true})
-
-	defer file.Close()
-	file2, err := os.OpenFile("logfil", os.O_RDONLY, 0755)
-	if err != nil {
-		errorMsg := "Неудалось открыть файл"
-		log.Error(errorMsg, err)
-	}
-	fmt.Println("заказ оформлен")
-	infomsg := "заказ оформлен"
-	log.Info(infomsg)
-
-	fmt.Println(file2, "Контекс ", "не разделенный на разные страки")
-	warningmsg := "не правильное правописание слова строки/страки"
-	log.Warning(warningmsg)
-
-	debugmsg := "пример debug log"
-	log.Debug(debugmsg)
-}
+//func main() {
+//	log := Log{}
+//
+//	file, err := os.OpenFile("logfile", os.O_APPEND|os.O_WRONLY, 0600)
+//	if err != nil {
+//		fmt.Println(err)
+//		os.Exit(1)
+//	}
+//	log.Start(file, [4]bool{true, true, true, true})
+//
+//	defer file.Close()
+//	file2, err := os.OpenFile("logfil", os.O_RDONLY, 0755)
+//	if err != nil {
+//		errorMsg := "Неудалось открыть файл"
+//		log.Error(errorMsg, err)
+//	}
+//	fmt.Println("заказ оформлен")
+//	infomsg := "заказ оформлен"
+//	log.Info(infomsg)
+//
+//	fmt.Println(file2, "Контекс ", "не разделенный на разные страки")
+//	warningmsg := "не правильное правописание слова строки/страки"
+//	log.Warning(warningmsg)
+//
+//	debugmsg := "пример debug log"
+//	log.Debug(debugmsg)
+//}
 func line(l int) string {
 	var linestr string = "Строка " + strconv.Itoa(l) + ":"
 	return linestr
